@@ -1,6 +1,6 @@
 import os
 import sys
-from sqlalchemy import Column, ForeignKey, Integer, String
+from sqlalchemy import Column, ForeignKey, Integer, String, Enum
 from sqlalchemy.orm import relationship, declarative_base
 from sqlalchemy import create_engine
 from eralchemy2 import render_er
@@ -41,7 +41,7 @@ class Post(Base):
 class Media(Base):
     __tablename__ = 'media'
     id = Column(Integer, primary_key=True)
-    type = Column(String) #aca debe ir dato del tipo enum pero da error, preguntar.
+    type = Column(Enum('image','video')) 
     url = Column(String)
     post_id = Column(Integer, ForeignKey('post.id'))
     post_id_relationship = relationship(Post)
